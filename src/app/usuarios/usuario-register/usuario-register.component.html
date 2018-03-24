@@ -1,0 +1,42 @@
+<div class="container">
+
+  <form [formGroup]="usuarioForm" (submit)="guardar(usuarioForm)">
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Nombre</span>
+      </div>
+      <input class="form-control" type="text" formControlName="nombre" autocomplete="false">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Apellido</span>
+      </div>
+      <input class="form-control" type="text" formControlName="apellido" autocomplete="false">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">DNI</span>
+      </div>
+      <input class="form-control" type="text" formControlName="dni">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">E-Mail</span>
+      </div>
+      <input class="form-control" type="email" formControlName="mail">
+    </div>
+
+    <div class="float-right">
+      <button type="reset" class="pull-right btn btn-light" (click)="limpiar(usuarioForm)">Limpiar</button>
+      <button type="submit" [disabled]="usuarioForm.invalid" class="btn btn-success">Guardar</button>
+    </div>
+
+  </form>
+
+  <p>{{usuarioForm.status | json}}</p>
+
+</div>
