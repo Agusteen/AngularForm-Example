@@ -20,8 +20,8 @@ export class UsuarioRegisterComponent implements OnInit {
 
   inicializarForm() {
     this.usuarioForm = this.formBuilder.group({
-      nombre: ['', [Validators.required, Validators.pattern('[A-Za-z]+')]],
-      apellido: ['', [Validators.required, Validators.pattern('[A-Za-z]+')]],
+      nombre: ['', [Validators.required, Validators.pattern('[ñA-Za-z ]+')]],
+      apellido: ['', [Validators.required, Validators.pattern('[ñA-Za-z ]+')]],
       dni: ['', [Validators.required, Validators.pattern("[0-9]+")]],
       mail: ['', [Validators.required, Validators.email]]
     });
@@ -29,11 +29,6 @@ export class UsuarioRegisterComponent implements OnInit {
 
   guardar(form) {
     if(form.valid) alert("Se registró correctamente")
-  }
-
-  limpiar(form) {
-    console.log(form);
-    
   }
 
 }
