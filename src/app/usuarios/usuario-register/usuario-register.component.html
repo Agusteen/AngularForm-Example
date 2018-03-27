@@ -51,8 +51,9 @@
             <span *ngIf="usuarioForm.controls['mail'].errors.email && !usuarioForm.controls['mail'].errors.required">Formato de e-mail incorrecto</span>
           </ngb-alert>
 
-          <div class="float-right">
-            <button type="reset" class="pull-right btn btn-light">Limpiar</button>
+
+          <div class="pull-right">
+            <button type="reset" class="btn btn-light">Limpiar</button>
             <button type="submit" [disabled]="usuarioForm.invalid" class="btn btn-success">Guardar</button>
           </div>
 
@@ -60,6 +61,15 @@
 
         <!-- <p>{{usuarioForm.status | json}}</p> -->
       </div>
+      <hr>
+      <h5>Usuarios registrados</h5>
+      <div class="list-group" *ngFor="let usuario of usuarios">
+        <a (click)="eliminarItem(usuario)" class="list-group-item list-group-item-action">
+          <strong>{{usuario.nombre}} {{usuario.apellido}}</strong>, DNI: {{usuario.dni}}
+          <small class="float-right">{{usuario.mail}}</small>
+        </a>
+      </div>
+
     </div>
   </div>
 </div>

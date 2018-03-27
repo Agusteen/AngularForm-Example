@@ -9,7 +9,12 @@ import { Usuario } from '../usuario.model';
 })
 export class UsuarioRegisterComponent implements OnInit {
   usuarioForm: FormGroup;
-  usuario: Usuario = new Usuario(null, null, null, null);
+  usuarioNuevo: Usuario;
+  usuarios: Usuario[] = [
+    new Usuario('Agustin', 'Muñoz Campos', 37347617, 'agustin.munoz@incluit.com'),
+    new Usuario('Victor', 'Ruiz', 30677450, 'victor.rz@gmail.com'),
+    new Usuario('Nina', 'Kraviz', 17443671, 'ninakraviz@gmail.com')
+  ];
 
   constructor(private formBuilder: FormBuilder) {
     this.inicializarForm();
@@ -27,8 +32,20 @@ export class UsuarioRegisterComponent implements OnInit {
     });
   }
 
-  guardar(form) {
-    if(form.valid) alert("Se registró correctamente")
+  guardar(form) { 
+    if(form.valid) {
+      this.usuarioNuevo = new Usuario(form.controls.nombre.value, form.controls.apellido.value, form.controls.dni.value, form.controls.mail.value);
+      this.usuarios.push(this.usuarioNuevo);
+      this.usuarioForm.reset();
+      alert("El usuario se registró correctamente");
+    } else {
+      alert("Ups! No se puedo registrar el usuario");
+    }
+  }
+
+  eliminarItem(usuario) {
+    let index = this.usuarios.indexOf(usuario);
+    this.usuarios.splice(index, 1);
   }
 
 }

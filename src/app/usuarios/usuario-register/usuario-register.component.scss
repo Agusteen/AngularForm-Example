@@ -4,4 +4,14 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    .pull-right {
+        text-align: right;
+    }
+
+    .list-group-item:hover {
+        cursor: pointer;
+        background-color: rgb(235, 165, 165);
+        text-decoration: line-through;
+    }
 }
